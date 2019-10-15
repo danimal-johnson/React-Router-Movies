@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Movie = (props) => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(); // WAS {}!
  
   console.log ("Getting movie " + props.title);
 
@@ -13,8 +13,6 @@ const Movie = (props) => {
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
     console.log(currentUrl, urlArray, id);
-
-    id = 1; // Until I can figure out dynamic routing
 
        axios
         .get(`http://localhost:5000/api/movies/${id}`)
@@ -40,7 +38,6 @@ const Movie = (props) => {
   const { title, director, metascore, stars } = movie;
   return (
     <div className="save-wrapper">
-      <h1>Save The Wrappers!</h1>
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
