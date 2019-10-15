@@ -4,7 +4,7 @@ import axios from 'axios';
 const Movie = (props) => {
   const [movie, setMovie] = useState(); // WAS {}!
  
-  console.log ("Getting movie " + props.title);
+  // console.log ("Getting movie " + props.title);
 
   useEffect(() => {
     let currentUrl = window.location.href;
@@ -12,7 +12,7 @@ const Movie = (props) => {
     let id = Number(urlArray[urlArray.length - 1]);
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
-    console.log(currentUrl, urlArray, id);
+    // console.log(currentUrl, urlArray, id);
 
        axios
         .get(`http://localhost:5000/api/movies/${id}`)
