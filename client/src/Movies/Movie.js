@@ -4,7 +4,7 @@ import axios from 'axios';
 const Movie = (props) => {
   const [movie, setMovie] = useState(); // WAS {}!
  
-  // console.log ("Getting movie " + props.title);
+  // console.log ("Getting movie: " + props.title);
 
   useEffect(() => {
     let currentUrl = window.location.href;
@@ -25,12 +25,6 @@ const Movie = (props) => {
 
   },[/* window.location.href FIX DEPENDENCY ARRAY */ ]);
   
-  // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
-
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
@@ -54,7 +48,7 @@ const Movie = (props) => {
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <div className="save-button" onClick={() => props.addToSavedList(movie)}>Save</div>
     </div>
   );
 }

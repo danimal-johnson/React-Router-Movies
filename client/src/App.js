@@ -4,11 +4,11 @@ import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
 
-
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
 
   const addToSavedList = movie => {
+    console.log(movie);
     setSavedList( [...savedList, movie] );
   };
 
@@ -16,8 +16,10 @@ const App = () => {
     <div>
       <SavedList list={savedList} />
       <Route exact path="/" component={MovieList} />
-      <Route path="/movies/:dataID" component={Movie} />
-      <div>Routes should be loaded...</div>
+      <Route path="/movies/:dataID" render={props => 
+          <Movie addToSavedList={addToSavedList} {...props} />
+      
+      } />
     </div>
   );
 };
